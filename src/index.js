@@ -1,17 +1,18 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-
+const routes = require('./routes');
+const db = require('./db');
 const router = express.Router()
-router.get("/", (req, res) => {
 
-    res.sendFile(path.join(__dirname + '/page/home.html'))
-})
 
-app.use(router)
+
+app.use('/',  routes)
 app.listen(3333, ()=> {
     console.log('SERVIDOR RODANDO')
 })
+
+app.use(express.json());
 
 
 
